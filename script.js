@@ -22,6 +22,7 @@ if (!blogContainer) {
         return [];
       }
 
+      // Return the articles as-is, without shuffling or modifying the order
       return data.articles;
     } catch (error) {
       console.error("Error fetching the News:", error);
@@ -31,24 +32,43 @@ if (!blogContainer) {
 
   function displayBlogs(articles) {
     blogContainer.innerHTML = ""; // Clear the container
+
     articles.forEach((article) => {
       const blogCard = document.createElement("div");
       blogCard.classList.add("blog-card");
-
-      const img = document.createElement("img");
-      img.src = article.urlToImage || "https://via.placeholder.com/600x400";
-      img.alt = article.title || "News image";
 
       const title = document.createElement("h2");
       title.textContent = article.title || "No Title";
 
       const description = document.createElement("p");
-      description.textContent =
+      const maxLength = 30;
+      const descriptionText =
         article.description || "No description available.";
+      if (descriptionText.length > maxLength) {
+        description.textContent =
+          descriptionText.substring(0, maxLength) + "...";
+      } else {
+        description.textContent = descriptionText;
+      }
+
+      let img;
+      if (article.urlToImage) {
+        img = document.createElement("img");
+        img.src = article.urlToImage;
+        img.alt = article.title || "News image";
+      } else {
+        img = document.createElement("img");
+        img.src = "https://placehold.co/600x400"; // Replace with a placeholder image
+        img.alt = article.title || "News placeholder image";
+      }
 
       blogCard.appendChild(img);
       blogCard.appendChild(title);
       blogCard.appendChild(description);
+      blogCard.addEventListener("click", () => {
+        window.open(article.url, "_blank");
+      });
+
       blogContainer.appendChild(blogCard);
     });
   }
