@@ -1,4 +1,5 @@
-const apikey = "f84cc82620c74a418f3556d0bbab24f9";
+import config from "./config.js";
+const apikey = config.API_KEY;
 const blogContainer = document.getElementById("blog-container");
 const searchField = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
