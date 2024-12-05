@@ -33,7 +33,7 @@ if (!blogContainer) {
   }
 
   searchButton?.addEventListener("click", async () => {
-    const query = searchField.ariaValueMax.trim();
+    const query = searchField.value.trim();
     if (query !== "") {
       try {
         const articles = await fetchNewsQuery(query);
