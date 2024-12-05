@@ -8,6 +8,13 @@ body {
   position: relative;
 }
 
+/* GLOBAL CSS */
+
+.obj-width {
+  max-width: 1200px;
+  margin: auto;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -42,4 +49,38 @@ nav {
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 10px;
+}
+
+#blog-container {
+  padding: 3rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.blog-card {
+  border: 1px solid #2d4c50;
+  width: 280px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem;
+  margin: 10px;
+}
+
+.blog-card:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.blog-card h1 {
+  color: ;
 }
